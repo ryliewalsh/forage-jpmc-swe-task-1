@@ -20,6 +20,7 @@
 
 import json
 import random
+import sys
 import urllib.request
 
 # Server API URLs
@@ -42,7 +43,12 @@ def getDataPoint(quote):
 def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b """
     """ ------------- Update this function ------------- """
-    return 1
+    """ Ensure that both prices are greater than zero"""
+    if price_a > 0 and price_b > 0:
+        return price_a/price_b
+    """ Alert to invalid data, returning an undesirable value rather than system exit"""
+    print("Error: Division by zero or negative value detected")
+    return -1
 
 
 # Main
